@@ -32,6 +32,9 @@ const config: Config = {
           "100%": { transform: "translateX(0%)" },
         },
       },
+      fontSize: {
+        clamp: "clamp(0.75rem, 0.25rem + 5vw, 20rem)",
+      },
     },
   },
   plugins: [],
