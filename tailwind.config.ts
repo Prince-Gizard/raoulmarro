@@ -33,7 +33,7 @@ const config: Config = {
         },
       },
       fontSize: {
-        clamp: "clamp(0.75rem, 0.25rem + 5vw, 20rem)",
+        clamp: "clamp(0.75rem, 0.5rem + 5vw, 20rem)",
       },
     },
   },

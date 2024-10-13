@@ -15,8 +15,8 @@ a {
 }
 
 body {
-  background-color: oklch(26.06% 0.004 84.58);
-  color: oklch(82.58% 0.018 81.32);
+  background-color: oklch(0% 0 247.98);
+  color: oklch(62.75% 0.0095 247.98);
   font-family: var(--font-sans);
 }
 
