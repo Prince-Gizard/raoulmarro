@@ -53,19 +53,23 @@ export const Home: NextPage = () => {
   const [name, setName] = useState(0)
 
   return (
-    <div className="flex flex-1 justify-between p-3">
-      <div className="flex flex-1 flex-col justify-between">
+    <div className="flex flex-1 justify-between gap-3 px-2">
+      <div className="w-1 rounded-full bg-gradient-to-t from-primaryLight to-error" />
+      <div className="flex flex-1 flex-col">
         {titleData?.map(title => {
           return (
-            <div key={title?.id} className="flex gap-2">
+            <div
+              key={title?.id}
+              className="inline-flex gap-4 text-clamp leading-none"
+            >
               <div className="flex cursor-default flex-col justify-center text-xl">
-                <div>{"#"}</div>
-                <div>{title?.id}</div>
+                <span>{"#"}</span>
+                <span>{title?.id}</span>
               </div>
 
-              <div
+              <span
                 suppressHydrationWarning
-                className="flex flex-1 cursor-pointer text-clamp hover:text-secondaryLight"
+                className="cursor-pointer hover:text-secondaryLight"
                 onMouseEnter={() => {
                   setModelName(title?.model), setName(title?.id)
                 }}
@@ -75,54 +79,54 @@ export const Home: NextPage = () => {
               >
                 {title?.title}
                 {name === title?.id && <span>{"->"}</span>}
-              </div>
+              </span>
             </div>
           )
         })}
       </div>
-      <div className="static flex flex-1 cursor-grab items-center justify-center">
-        <div className="fixed z-20 min-h-svh w-2/4">
+      <div className="static flex max-h-screen flex-1 items-center justify-center p-11">
+        <div className="fixed z-20 min-h-screen w-2/4">
           <Image
             fill
             alt={"title"}
             blurDataURL={BLUR}
-            className="max-h-dvh w-auto object-cover"
+            className="object-cover"
             placeholder="blur"
             quality={100}
             sizes="(100vw - 32px) 165px, 280px"
             src={defaultPic3}
           />
         </div>
-        <div className="fixed z-20 min-h-svh w-2/4">
+        <div className="fixed z-20 min-h-screen w-2/4">
           <Image
             fill
             alt={"title"}
             blurDataURL={BLUR}
-            className="border-inherit max-h-dvh w-auto rounded-xl border-4 border-solid border-primaryMain object-cover"
+            className="border-inherit rounded-xl border-4 border-solid border-primaryMain object-cover"
             placeholder="blur"
             quality={100}
             sizes="(100vw - 32px) 165px, 280px"
             src={defaultPic}
           />
         </div>
-        <div className="fixed z-30 min-h-dvh w-2/4">
+        <div className="fixed z-30 min-h-screen w-2/4">
           <Image
             fill
             alt={"title"}
             blurDataURL={BLUR}
-            className="max-h-dvh w-auto object-cover"
+            className="object-cover"
             placeholder="blur"
             quality={100}
             sizes="(100vw - 32px) 165px, 280px"
             src={defaultPic2}
           />
         </div>
-        <div className="fixed z-30 min-h-dvh w-2/4">
+        <div className="fixed z-30 min-h-screen w-2/4">
           <Image
             fill
             alt={"title"}
             blurDataURL={BLUR}
-            className="max-h-dvh w-auto object-cover"
+            className="object-cover"
             placeholder="blur"
             quality={100}
             sizes="(100vw - 32px) 165px, 280px"

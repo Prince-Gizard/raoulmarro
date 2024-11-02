@@ -33,7 +33,10 @@ const config: Config = {
         },
       },
       fontSize: {
-        clamp: "clamp(0.75rem, 0.5rem + 5vw, 20rem)",
+        clamp: "clamp(0.75rem, 0.5rem + 2.6vw, 20rem)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)"],
       },
     },
   },
