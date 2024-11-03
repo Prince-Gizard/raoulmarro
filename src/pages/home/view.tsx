@@ -48,94 +48,99 @@ export const Home: NextPage = () => {
   //   }, delay)
   // }
 
+  //{performance.now()}
+
   const [modelName, setModelName] = useState("moon")
 
   const [name, setName] = useState(0)
 
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
+
+  //setTimeout(() => setCurrentDate(new Date()), 1000)
+
   return (
-    <div className="flex flex-1 justify-between gap-3 px-2">
-      <div className="w-1 rounded-full bg-gradient-to-t from-primaryLight to-error" />
-      <div className="flex flex-1 flex-col">
-        {titleData?.map(title => {
-          return (
-            <div
-              key={title?.id}
-              className="inline-flex gap-4 text-clamp leading-none"
-            >
-              <div className="flex cursor-default flex-col justify-center text-xl">
-                <span>{"#"}</span>
-                <span>{title?.id}</span>
-              </div>
-
-              <span
-                suppressHydrationWarning
-                className="cursor-pointer hover:text-secondaryLight"
-                onMouseEnter={() => {
-                  setModelName(title?.model), setName(title?.id)
-                }}
-                onMouseLeave={() => {
-                  setName(0)
-                }}
+    <div className="flex-col">
+      <div className="flex flex-1 justify-between gap-3 px-2">
+        <div className="w-1 rounded-full bg-gradient-to-t from-primaryLight to-error" />
+        <div className="flex flex-1 flex-col">
+          {titleData?.map(title => {
+            return (
+              <div
+                key={title?.id}
+                className="inline-flex gap-4 text-clamp leading-none"
               >
-                {title?.title}
-                {name === title?.id && <span>{"->"}</span>}
-              </span>
-            </div>
-          )
-        })}
-      </div>
-      <div className="static flex max-h-screen flex-1 items-center justify-center p-11">
-        <div className="fixed z-20 min-h-screen w-2/4">
-          <Image
-            fill
-            alt={"title"}
-            blurDataURL={BLUR}
-            className="object-cover"
-            placeholder="blur"
-            quality={100}
-            sizes="(100vw - 32px) 165px, 280px"
-            src={defaultPic3}
-          />
-        </div>
-        <div className="fixed z-20 min-h-screen w-2/4">
-          <Image
-            fill
-            alt={"title"}
-            blurDataURL={BLUR}
-            className="border-inherit rounded-xl border-4 border-solid border-primaryMain object-cover"
-            placeholder="blur"
-            quality={100}
-            sizes="(100vw - 32px) 165px, 280px"
-            src={defaultPic}
-          />
-        </div>
-        <div className="fixed z-30 min-h-screen w-2/4">
-          <Image
-            fill
-            alt={"title"}
-            blurDataURL={BLUR}
-            className="object-cover"
-            placeholder="blur"
-            quality={100}
-            sizes="(100vw - 32px) 165px, 280px"
-            src={defaultPic2}
-          />
-        </div>
-        <div className="fixed z-30 min-h-screen w-2/4">
-          <Image
-            fill
-            alt={"title"}
-            blurDataURL={BLUR}
-            className="object-cover"
-            placeholder="blur"
-            quality={100}
-            sizes="(100vw - 32px) 165px, 280px"
-            src={defaultPic4}
-          />
-        </div>
+                <div className="flex w-5 cursor-default flex-col justify-center text-xl">
+                  <span>{"#"}</span>
+                  <span>{title?.id}</span>
+                </div>
 
-        <div className="fixed z-50">
-          <VoxelMain modelName={modelName} />
+                <span
+                  suppressHydrationWarning
+                  className="cursor-pointer whitespace-nowrap hover:text-secondaryLight"
+                  onMouseEnter={() => {
+                    setModelName(title?.model), setName(title?.id)
+                  }}
+                  onMouseLeave={() => {
+                    setName(0)
+                  }}
+                >
+                  {title?.title}
+                </span>
+                <span className="flex w-5 items-center justify-center text-secondaryLight">
+                  {name === title?.id && <span>{">"}</span>}
+                </span>
+              </div>
+            )
+          })}
+        </div>
+        <div className="sticky top-0 flex max-h-screen flex-1 items-center justify-center">
+          <div className="">
+            <VoxelMain modelName={modelName} />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-between gap-3 px-2">
+        <div className="w-1 rounded-full bg-gradient-to-t from-error to-primaryLight" />
+        <div className="flex flex-1 flex-col">
+          {titleData?.map(title => {
+            const formatter = new Intl.DateTimeFormat("en", { month: "short" })
+            return (
+              <div
+                key={title?.id}
+                className="flex gap-4 text-clamp leading-none"
+              >
+                <div className="flex w-5 cursor-default flex-col justify-center text-xl">
+                  <span>{"#"}</span>
+                  <span>{title?.id}</span>
+                </div>
+
+                <div
+                  suppressHydrationWarning
+                  className="flex flex-1 cursor-pointer justify-between gap-3 whitespace-nowrap hover:text-secondaryLight"
+                  onMouseEnter={() => {
+                    setModelName(title?.model), setName(title?.id)
+                  }}
+                  onMouseLeave={() => {
+                    setName(0)
+                  }}
+                >
+                  <span>{currentDate?.toLocaleDateString("ru-RU")}</span>
+                  <div>
+                    <span>{currentDate?.getHours() + ":"}</span>
+                    <span>{currentDate?.getMinutes() + ":"}</span>
+                    <span>{currentDate?.getSeconds()}</span>
+                  </div>
+                  <div>
+                    <span>{currentDate?.getDate()}</span>
+                  </div>
+                  <div>
+                    <span>{formatter.format(currentDate)}</span>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
