@@ -1,6 +1,7 @@
 import { type ReactNode } from "react"
 
 import { cx } from "@/shared/utils"
+import { RandomDotedCanvas } from "../src/shared/ui/randomDotedCanvas"
 
 type LayoutProps = {
   className?: string
@@ -15,7 +16,13 @@ export const Layout = ({ children, className }: LayoutProps) => {
       {/* <Toaster /> */}
       {/* <Header /> */}
 
-      <main className="yargrow flex-1 pb-1">{children}</main>
+      <main className="yargrow relative flex-1 pb-1">
+        <div className="fixed top-0">
+          <RandomDotedCanvas />
+        </div>
+        {children}
+      </main>
+
       {/* <ScrollToTopButton className="fixed bottom-40 right-4 z-50" /> */}
       {/* <Footer /> */}
     </div>

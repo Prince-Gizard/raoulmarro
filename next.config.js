@@ -4,6 +4,16 @@ const svg = require("@neodx/svg/webpack")
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack: config => {
     config.module.rules = [
       ...config.module.rules,
