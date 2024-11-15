@@ -14,6 +14,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  pageExtensions: ["_layout.tsx"],
   webpack: config => {
     config.module.rules = [
       ...config.module.rules,
