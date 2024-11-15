@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./list.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: oklch(0% 0 247.98);
+  color: oklch(62.75% 0.0095 247.98);
+  font-family: var(--font-sans);
+}

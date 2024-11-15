@@ -1,0 +1,1 @@
+export { RandomDotedCanvas } from "./view"
