@@ -1,5 +1,5 @@
-import { Works } from "@/pages/works"
+// import { Works } from "@/pages/works"
 
-//export { worksStatic as getStaticProps } from '@/pages/about';
+// //export { worksStatic as getStaticProps } from '@/pages/about';
 
-export default Works
+// export default Works

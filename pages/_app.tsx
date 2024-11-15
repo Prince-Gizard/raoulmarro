@@ -42,6 +42,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <title>bad ass</title>
         <meta content="bad ass" name="description" />
         <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+        <script type="text/javascript" src="../canvas.js"></script>
       </Head>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={pageProps}>

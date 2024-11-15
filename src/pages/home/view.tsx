@@ -1,5 +1,6 @@
+"use client"
 /* eslint-disable react/jsx-no-undef */
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import type { NextPage } from "next/types"
 
@@ -10,6 +11,8 @@ import defaultPic3 from "../../../public/WATER.png"
 import { VoxelMain } from "../../shared/ui/voxel"
 
 import { titleData } from "./data"
+import Script from "next/script"
+import { RandomDotedCanvas } from "../../shared/ui/randomDotedCanvas"
 
 export const BLUR =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8dtvXGAAHQAJTo/saLQAAAABJRU5ErkJggg=="
@@ -56,10 +59,14 @@ export const Home: NextPage = () => {
 
   const [currentDate, setCurrentDate] = useState<Date>(new Date())
 
-  //setTimeout(() => setCurrentDate(new Date()), 1000)
+  // const timer = () => {
+  //   setTimeout(() => setCurrentDate(new Date()), 1)
+  // }
+
+  // timer()
 
   return (
-    <div className="flex-col">
+    <div className="relative z-50 flex-col">
       <div className="flex flex-1 justify-between gap-3 px-2">
         <div className="w-1 rounded-full bg-gradient-to-t from-primaryLight to-error" />
         <div className="flex flex-1 flex-col">
@@ -105,6 +112,8 @@ export const Home: NextPage = () => {
         <div className="flex flex-1 flex-col">
           {titleData?.map(title => {
             const formatter = new Intl.DateTimeFormat("en", { month: "short" })
+
+            const seconnd = currentDate?.getSeconds()
             return (
               <div
                 key={title?.id}
@@ -118,18 +127,12 @@ export const Home: NextPage = () => {
                 <div
                   suppressHydrationWarning
                   className="flex flex-1 cursor-pointer justify-between gap-3 whitespace-nowrap hover:text-secondaryLight"
-                  onMouseEnter={() => {
-                    setModelName(title?.model), setName(title?.id)
-                  }}
-                  onMouseLeave={() => {
-                    setName(0)
-                  }}
                 >
                   <span>{currentDate?.toLocaleDateString("ru-RU")}</span>
                   <div>
                     <span>{currentDate?.getHours() + ":"}</span>
                     <span>{currentDate?.getMinutes() + ":"}</span>
-                    <span>{currentDate?.getSeconds()}</span>
+                    <span>{seconnd}</span>
                   </div>
                   <div>
                     <span>{currentDate?.getDate()}</span>
